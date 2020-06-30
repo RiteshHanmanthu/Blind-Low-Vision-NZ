@@ -48,12 +48,10 @@ namespace LowVision.Areas.Identity.Pages.Account
         {
             [Required]
             [DataType(DataType.Text)]
-            [EmailAddress]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
             [Required]
             [DataType(DataType.Text)]
-            [EmailAddress]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
 
