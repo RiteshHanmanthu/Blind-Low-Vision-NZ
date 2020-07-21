@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LowVision.Models
+namespace LowVision.Views.AdministrationRoles
 {
-    public class ProjectRole
+    public class CreateRoleViewModel
     {
+        [Required]
         public string RoleName { get; set; }
     }
 }
