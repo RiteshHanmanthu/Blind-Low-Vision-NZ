@@ -40,7 +40,7 @@ namespace LowVision.Controllers
 
                 if(result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("ListRoles", "Administration");
                 }
 
                 foreach(IdentityError error in result.Errors)
@@ -50,8 +50,15 @@ namespace LowVision.Controllers
             }
 
             return View();
+
         }
-                
+
+        [HttpGet]
+        public IActionResult ListRoles()
+        {
+            var roles = roleManager.Roles;
+            return View(roles   );
+        }
  
     }
 }
