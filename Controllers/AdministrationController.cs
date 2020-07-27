@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using LowVision.Areas.Identity.Data;
+using LowVision.Models;
 using LowVision.Views.AdministrationRoles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +15,12 @@ namespace LowVision.Controllers
    public   class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<LowVisionUser> userManager;
 
-        public AdministrationController(RoleManager<IdentityRole>roleManager)
+        public AdministrationController(RoleManager<IdentityRole>roleManager, UserManager<LowVisionUser> userManager) 
         {
             this.roleManager = roleManager;
+            this.userManager = userManager;
         }
 
         [HttpGet]
@@ -57,8 +61,33 @@ namespace LowVision.Controllers
         public IActionResult ListRoles()
         {
             var roles = roleManager.Roles;
-            return View(roles   );
+            return View(roles);
         }
- 
+
+        [HttpGet]
+        public async Task<IActionResult> EditRole(string id)
+        {
+            var role = await roleManager.FindByIdAsync(id);
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            var model = new EditRoleViewModel
+            {
+                Id = role.Id,
+                RoleName = role.Name
+            };
+
+            foreach(var user in userManager.Users)
+            {
+                if(await userManager.IsInRoleAsync(user, role.Name))
+                {
+                    model.Users.Add(user.UserName)
+                }
+            }
+        }    
     }
 }
