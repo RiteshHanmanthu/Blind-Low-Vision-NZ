@@ -13,12 +13,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace LowVision.Controllers
 {
-   public   class AdministrationController : Controller
+    public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<LowVisionUser> userManager;
 
-        public AdministrationController(RoleManager<IdentityRole>roleManager, UserManager<LowVisionUser> userManager) 
+        public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<LowVisionUser> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
@@ -32,9 +32,9 @@ namespace LowVision.Controllers
 
         [HttpPost]
 
-        public async Task <IActionResult> CreateRole(CreateRoleViewModel model)
+        public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 IdentityRole identityRole = new IdentityRole
                 {
@@ -43,12 +43,12 @@ namespace LowVision.Controllers
 
                 IdentityResult result = await roleManager.CreateAsync(identityRole);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     return RedirectToAction("ListRoles", "Administration");
                 }
 
-                foreach(IdentityError error in result.Errors)
+                foreach (IdentityError error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
@@ -106,7 +106,7 @@ namespace LowVision.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {model.Id} cannot be found";
+                ViewBag.ErrorMessage = $"User with Id = {model.Id} cannot be found";
                 return View("NotFound");
             }
             else
@@ -140,7 +140,7 @@ namespace LowVision.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {roleId} cannot be found";
+                ViewBag.ErrorMessage = $"User with Id = {roleId} cannot be found";
                 return View("NotFound");
             }
 
@@ -167,9 +167,8 @@ namespace LowVision.Controllers
             }
 
             return View(model);
-
         }
-       
+
         [HttpPost]
         public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string roleId)
         {
@@ -212,4 +211,8 @@ namespace LowVision.Controllers
             return RedirectToAction("EditRole", new { Id = roleId });
         }
     }
+
 }
+
+
+
