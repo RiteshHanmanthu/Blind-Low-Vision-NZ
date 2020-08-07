@@ -7,6 +7,7 @@ using LowVision.Areas.Identity.Data;
 using LowVision.Models;
 using LowVision.ViewModel;
 using LowVision.Views.AdministrationRoles;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -73,7 +74,7 @@ namespace LowVision.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
                 return View("NotFound");
             }
 
@@ -176,7 +177,7 @@ namespace LowVision.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {roleId} cannot be found";
+                ViewBag.ErrorMessage = $"User with Id = {roleId} cannot be found";
                 return View("NotFound");
             }
 
