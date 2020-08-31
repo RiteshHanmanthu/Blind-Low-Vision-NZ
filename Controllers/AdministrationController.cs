@@ -15,7 +15,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace LowVision.Controllers
 {
     [Authorize(Roles ="Admin")]
-    [Authorize(Roles ="User")]
+    
 
     public class AdministrationController : Controller
     {
