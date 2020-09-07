@@ -22,10 +22,19 @@ namespace LowVision.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<LowVisionUser> userManager;
 
+
+
         public AdministrationController(RoleManager<IdentityRole> roleManager, UserManager<LowVisionUser> userManager)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+        }
+
+        [HttpGet]
+        public IActionResult ListUsers()
+        {
+            var users = userManager.Users;
+            return View();
         }
 
         [HttpGet]
