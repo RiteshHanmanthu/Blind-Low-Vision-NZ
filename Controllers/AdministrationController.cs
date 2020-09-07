@@ -31,10 +31,10 @@ namespace LowVision.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListUsers()
+        public IActionResult ListUsers() 
         {
             var users = userManager.Users;
-            return View();
+            return View(users);
         }
 
         [HttpGet]
