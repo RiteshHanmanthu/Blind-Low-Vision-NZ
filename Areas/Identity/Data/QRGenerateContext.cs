@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using  LowVision.Areas.Identity.Data;
+
 
 namespace LowVision.Data
 {
-    public class QRGenerateContext : IdentityDbContext<IdentityUser>
+    public class QRGenerateContext : IdentityDbContext<LowVisionUser>
     {
         public QRGenerateContext(DbContextOptions<QRGenerateContext> options)
             : base(options)
