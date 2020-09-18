@@ -16,10 +16,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace LowVision.Controllers
 {
     [Authorize(Roles ="Admin")]
-    
-
-    public class AdministrationController : Controller
-    {
+     public class AdministrationController : Controller
+     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<LowVisionUser> userManager;
 
@@ -30,6 +28,33 @@ namespace LowVision.Controllers
             this.roleManager = roleManager;
             this.userManager = userManager;
         }
+
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await userManager.FindByIdAsync(id);
+
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await userManager.DeleteAsync(user);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("ListUsers");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View("ListUsers");
+            }
+        }   
 
         [HttpGet]
         public IActionResult ListUsers() 
