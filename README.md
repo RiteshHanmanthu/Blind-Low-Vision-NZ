@@ -27,10 +27,10 @@ This includes....
 # Future Implementation Ideas
 What I plan to further develop this project in the future.
 * Develop a Donation platform for charitable donations.
-* Develop a video according to the end-user requirements (target audience).
+* Develop a video considering high restrctions of the end-user (target audience).
 
 # Requirements
 * ASP.NET Framework version 3.1
-* Min. 8 gb RAM
+* Min. 4 GB RAM
 # Software running requirements
 CLick LowVision.Exe to run application
