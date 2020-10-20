@@ -1,4 +1,4 @@
-#  Blind & Low Vision
+#  Blind & Low Vision NZ
 This project is made by a student of Avondale College, Auckland, New Zealand overseen by professional and qualified educators.
 
 # Preamble 
@@ -17,11 +17,11 @@ This includes....
 * People who wish to donate to the ones in need.
 
 # Project Overview
- This project is to develop a engaging website that would provide information about a fundraising challenge to any user who is browsing.
+ This project is to develop a engaging website that would provide information about a fundraising challenge to any user, with the option to donate.
  This web-application will be made to be compatible to most devices used to date by using ASP.NET Core Web Application>(ASP.NET Core v3.1) Web-Application MVC using Visual Studio 2019.
  
 # Licenses
-* GNU (General Public License). Any user is able to run, study, share, and modify the software BUT with the condition of mentioning the creator.
+* GNU v3.0 (General Public License). Any user is able to run, study, share, and modify the software BUT with the condition of mentioning the creator.
 * The software is provided WITH ABSOLUTELY NO WARRANTY, EXPRESS OR IMPLIED.
 
 # Future Implementation Ideas
