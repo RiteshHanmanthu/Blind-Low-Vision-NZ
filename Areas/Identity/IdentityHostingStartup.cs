@@ -21,7 +21,7 @@ namespace LowVision.Areas.Identity
                         context.Configuration.GetConnectionString("LowVisionDBContextConnection")));
 
                 services.AddDefaultIdentity<LowVisionUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<LowVisionDBContext>();
+                    .AddRoles<IdentityRole>().AddEntityFrameworkStores<LowVisionDBContext>();
             });
         }
     }
